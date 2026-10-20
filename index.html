@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Apu Tetris" />
+  <meta name="description" content="Reklámtalan Tetris apunak – webes és androidos telepíthető app. Nulla reklám, annál több szórakozás." />
+
+  <title>Apu Tetris 🧱</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Apple touch icon -->
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icon-192.png" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <header id="header">
+    <div id="logo">APU TETRIS</div>
+    <span id="no-ad-badge">🚫 REKLÁM</span>
+    <div id="score-panel">
+      <div class="score-box">
+        <label>Pont</label>
+        <span id="score-val">0</span>
+      </div>
+      <div class="score-box">
+        <label>Sor</label>
+        <span id="lines-val">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Game area -->
+  <section id="game-area">
+    <!-- Board -->
+    <div id="board-wrapper">
+      <canvas id="tetris-canvas" aria-label="Tetris játéktér"></canvas>
+    </div>
+
+    <!-- Side panel -->
+    <aside id="side-panel">
+      <div class="panel-box" id="next-box">
+        <h3>Következő</h3>
+        <canvas id="next-canvas"></canvas>
+      </div>
+      <div class="panel-box" id="hold-box">
+        <h3>Tartott</h3>
+        <canvas id="hold-canvas"></canvas>
+      </div>
+      <div class="panel-box" id="level-box">
+        <h3>Szint</h3>
+        <span id="level-val">1</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Touch controls -->
+  <nav id="touch-controls" aria-label="Érintővezérlők">
+    <div class="ctrl-row">
+      <button class="ctrl-btn wide" id="btn-hold"    title="Tartás (C)">🤲 Tartás</button>
+      <button class="ctrl-btn wide" id="btn-rotate"  title="Forgatás (↑)">🔄 Forgat</button>
+      <button class="ctrl-btn wide" id="btn-drop"    title="Esés (Szóköz)">⬇️ Dob</button>
+    </div>
+    <div class="ctrl-row">
+      <button class="ctrl-btn big" id="btn-left"  title="Balra (←)">◀</button>
+      <button class="ctrl-btn med" id="btn-down"  title="Le (↓)">▼</button>
+      <button class="ctrl-btn big" id="btn-right" title="Jobbra (→)">▶</button>
+    </div>
+    <div class="ctrl-row">
+      <button class="ctrl-btn wide" id="btn-pause"   title="Szünet (P/Esc)">⏸ Szünet</button>
+      <button class="ctrl-btn wide danger" id="btn-restart" title="Újraindítás">🔁 Újra</button>
+    </div>
+  </nav>
+
+</div>
+
+<!-- Pause / Game Over overlay -->
+<div id="overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+  <h2 id="overlay-title">SZÜNET</h2>
+  <p id="overlay-sub"></p>
+  <div id="overlay-score"></div>
+  <button class="overlay-btn" id="btn-overlay-resume">▶ FOLYTATÁS</button>
+  <button class="overlay-btn danger" id="btn-overlay-play">ÚJ JÁTÉK</button>
+</div>
+
+<!-- PWA Install Banner -->
+<div id="install-banner" role="banner">
+  <p><strong>Telepítsd</strong> az Apu Tetrist a telefonodra – reklámmentesen, offline is játszható!</p>
+  <button id="btn-install">📲 Telepítés</button>
+  <button id="btn-dismiss" aria-label="Bezárás">✕</button>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
