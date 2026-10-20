@@ -52,7 +52,7 @@ apu-tetris/
 **7-bag randomizer**: minden 7 elem tartalmaz egyet minden darabból, véletlenszerű sorrendben. Sosem fordul elő, hogy sokat kelljen várni egy bizonyos darabra.
 
 ### Forgatás
-**SRS (Super Rotation System)** wall-kick táblázatokkal – azonos a modern Tetrisek szabványával.
+**SRS (Super Rotation System) alapú forgatás** wall-kick eltolási táblázatokkal, amely segíti a falak és más elemek melletti elforgatást.
 
 ### Pontozás
 | Törölt sorok | Alappont |
@@ -110,10 +110,9 @@ A játék **Progressive Web App (PWA)**, ami azt jelenti:
 3. A `sw.js` service worker **offline is elérhetővé** teszi (cache-eli az összes fájlt).
 4. Telepítés után a játék **app-szerűen** nyílik meg (fullscreen, státuszsor nélkül).
 
-### Hogyan telepítsd Androidon:
-1. Nyisd meg a GitHub Pages URL-t Chrome-ban.
-2. A „Telepítés" sáv automatikusan megjelenik alul – koppints rá.
-3. Vagy: Chrome menü → „Hozzáadás a kezdőképernyőhöz".
+### Hogyan telepítsd:
+- **Android (Chrome / Edge):** Nyisd meg a GitHub Pages linket; a felső telepítési bannerben koppints a „Telepítés” gombra (vagy a Chrome menü → „Alkalmazás telepítése” / „Hozzáadás a kezdőképernyőhöz”).
+- **iOS (Safari):** Nyisd meg a linket Safariban, koppints az alsó **Megosztás** ikonra (⎋), majd válaszd a **„Főképernyőhöz adás”** opciót.
 
 ---
 

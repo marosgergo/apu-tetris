@@ -24,11 +24,11 @@ Csak a játék. Ahogy lennie kell.
 ## 📱 Androidos telepítés
 
 1. Nyisd meg a fenti linket **Chrome**-ban Android telefonon
-2. Az oldal alján megjelenik: **„Telepítés"** gomb – koppints rá
+2. Az oldal tetején megjelenik: **„Telepítés”** gomb – koppints rá
 3. A játék megjelenik a kezdőképernyőn, mint egy rendes app
 4. **Offline is játszható** – nincs szükség netre!
 
-> iOS Safari esetén: Chrome menü → „Hozzáadás a kezdőképernyőhöz"
+> 🍎 **iOS Safari esetén:** Koppints a Safari alsó **Megosztás** gombjára (négyzetből felfelé mutató nyíl), majd válaszd a **„Főképernyőhöz adás”** lehetőséget.
 
 ---
 
@@ -64,9 +64,9 @@ Csak a játék. Ahogy lennie kell.
 
 ## ✨ Funkciók
 
-- 🧱 **Teljes Tetris-motor** – SRS forgatás, 7-bag randomizer, ghost piece
+- 🧱 **Klasszikus Tetris élmény** – 7-bag véletlensorsolás, SRS fal-elrúgások (wall kicks) és ghost piece előnézet
 - 👻 **Ghost piece** – halvány árnyék mutatja az esési helyet
-- 🎯 **Idősbarát kialakítás** – nagy gombok, tiszta feliratok, nincs véletlen gombnyomás
+- 🎯 **Idősbarát kialakítás** – extra nagy érintőgombok, tiszta feliratok és a véletlen lenyomások kockázatának minimalizálása
 - 📈 **Pontozás** – szint szerint növekvő pontok
 - ⚡ **Szintek** – fokozatos gyorsulás
 - 🌙 **Neon dark téma** – kíméletes a szemnek
