@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apu-tetris-v5';
+const CACHE_NAME = 'apu-tetris-v6';
 const ASSETS = [
   './',
   './index.html',
