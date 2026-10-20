@@ -13,14 +13,17 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="apple-touch-icon" href="icon-192.png" />
   <link rel="icon" type="image/png" href="icon-192.png" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
 <div id="app">
 
   <!-- Fejléc -->
   <header id="header">
-    <div id="logo">APU TETRIS</div>
+    <div id="logo-wrap">
+      <div id="logo">APU TETRIS</div>
+      <a id="brand-link" href="https://www.marosgergo.hu" target="_blank" rel="noopener">by Maros Gergő</a>
+    </div>
     <span id="no-ad-badge">🚫 REKLÁM</span>
     <div id="score-panel">
       <div class="score-box">
@@ -61,6 +64,7 @@
           <span class="btn-txt">Újra</span>
         </button>
       </div>
+      <a id="side-brand" href="https://www.marosgergo.hu" target="_blank" rel="noopener">marosgergo.hu</a>
     </aside>
   </section>
 
@@ -93,6 +97,7 @@
   <h2 id="overlay-title">SZÜNET</h2>
   <p id="overlay-sub"></p>
   <div id="overlay-score"></div>
+  <p id="overlay-credit">Készítette: <a href="https://www.marosgergo.hu" target="_blank" rel="noopener">Maros Gergő</a></p>
   <button class="overlay-btn" id="btn-overlay-resume">▶ FOLYTATÁS</button>
   <button class="overlay-btn danger" id="btn-overlay-play">ÚJ JÁTÉK</button>
 </div>
@@ -104,6 +109,6 @@
   <button id="btn-dismiss" aria-label="Bezárás">✕</button>
 </div>
 
-<script src="game.js?v=4"></script>
+<script src="game.js?v=5"></script>
 </body>
 </html>
