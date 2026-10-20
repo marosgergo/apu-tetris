@@ -201,9 +201,10 @@ class TetrisGame {
     this.flashRows = fullRows;
     setTimeout(() => { this.flashRows = []; }, 150);
 
-    // Sorokat törlünk és felülre üres sort szúrunk
-    for (const r of [...fullRows].reverse()) {
-      this.board.splice(r, 1);
+    // Előbb eltávolítjuk az összes megtelt sort (elkerülve az unshift index-eltolódást)
+    this.board = this.board.filter((_, r) => !fullRows.includes(r));
+    // Majd felülre pontosan annyi új üres sort teszünk, amennyi törlődött
+    while (this.board.length < ROWS + HIDDEN) {
       this.board.unshift(Array(COLS).fill(null));
     }
 
