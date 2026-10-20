@@ -71,9 +71,6 @@ Minimális esési sebesség: 80 ms/cella.
 ### Ghost piece
 Halvány árnyék mutatja, hova esne a darab – segíti a döntést.
 
-### Hold (tartás)
-Egy darabot félre lehet tenni. Körönként egyszer használható.
-
 ---
 
 ## 5. Vezérlők
@@ -81,19 +78,26 @@ Egy darabot félre lehet tenni. Körönként egyszer használható.
 ### Billentyűzet
 | Gomb | Funkció |
 |------|---------|
-| ← / → | Mozgatás |
+| ← / → | Mozgatás balra / jobbra |
 | ↓ | Puha esés |
 | ↑ | Forgatás jobbra |
 | Z | Forgatás balra |
 | Szóköz | Kemény esés |
-| C | Hold/Tartás |
 | P / Esc | Szünet |
 
 ### Érintővezérlők (mobilon)
-- **Csúsztatás** balra/jobbra: mozgatás
-- **Csúsztatás** le: puha esés
-- **Koppintás** a tábláron: forgatás
-- Képernyőn lévő gombok: minden funkció elérhető
+- **Képernyő alatti 4 nagy gomb (idősbarát, extra nagy érintőfelület):**
+  - `🔄 FORGATÁS` – széles, felső sáv (bármelyik hüvelykujjal könnyen elérhető)
+  - `◀ BAL` – balra mozgatás (hosszan nyomva folyamatos)
+  - `▼ LE` – puha esés / gyorsítás (hosszan nyomva folyamatos)
+  - `▶ JOBB` – jobbra mozgatás (hosszan nyomva folyamatos)
+- **Jobb oldali gombok (oldalpanelben, véletlen lenyomástól védve):**
+  - `⏸ Szünet` – játék megállítása és szünet menü megnyitása
+  - `🔁 Újra` – új játék indítása (aktív pontszám esetén megerősítést kér)
+- **Gesztusok:**
+  - **Csúsztatás** balra/jobbra: mozgatás
+  - **Csúsztatás** le: puha esés
+  - **Koppintás** a táblán: forgatás
 
 ---
 

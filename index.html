@@ -8,25 +8,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Apu Tetris" />
-  <meta name="description" content="Reklámtalan Tetris apunak – webes és androidos telepíthető app. Nulla reklám, annál több szórakozás." />
-
+  <meta name="description" content="Reklámtalan Tetris apunak – webes és androidos telepíthető app." />
   <title>Apu Tetris 🧱</title>
-
-  <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json" />
-
-  <!-- Apple touch icon -->
   <link rel="apple-touch-icon" href="icon-192.png" />
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="icon-192.png" />
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
 <div id="app">
 
-  <!-- Header -->
+  <!-- Fejléc -->
   <header id="header">
     <div id="logo">APU TETRIS</div>
     <span id="no-ad-badge">🚫 REKLÁM</span>
@@ -42,51 +34,61 @@
     </div>
   </header>
 
-  <!-- Game area -->
+  <!-- Játéktér -->
   <section id="game-area">
-    <!-- Board -->
+    <!-- Tábla -->
     <div id="board-wrapper">
       <canvas id="tetris-canvas" aria-label="Tetris játéktér"></canvas>
     </div>
 
-    <!-- Side panel -->
+    <!-- Oldalpanel -->
     <aside id="side-panel">
-      <div class="panel-box" id="next-box">
-        <h3>Következő</h3>
+      <div class="panel-box">
+        <h3>Köv.</h3>
         <canvas id="next-canvas"></canvas>
-      </div>
-      <div class="panel-box" id="hold-box">
-        <h3>Tartott</h3>
-        <canvas id="hold-canvas"></canvas>
       </div>
       <div class="panel-box" id="level-box">
         <h3>Szint</h3>
         <span id="level-val">1</span>
       </div>
+      <div class="side-btn-group">
+        <button class="side-btn" id="btn-pause" title="Szünet (P/Esc)">
+          <span class="btn-icon">⏸</span>
+          <span class="btn-txt">Szünet</span>
+        </button>
+        <button class="side-btn danger" id="btn-restart" title="Újraindítás">
+          <span class="btn-icon">🔁</span>
+          <span class="btn-txt">Újra</span>
+        </button>
+      </div>
     </aside>
   </section>
 
-  <!-- Touch controls -->
+  <!-- Érintővezérlők: 4 nagy, idősbarát gomb -->
   <nav id="touch-controls" aria-label="Érintővezérlők">
-    <div class="ctrl-row">
-      <button class="ctrl-btn wide" id="btn-hold"    title="Tartás (C)">🤲 Tartás</button>
-      <button class="ctrl-btn wide" id="btn-rotate"  title="Forgatás (↑)">🔄 Forgat</button>
-      <button class="ctrl-btn wide" id="btn-drop"    title="Esés (Szóköz)">⬇️ Dob</button>
-    </div>
-    <div class="ctrl-row">
-      <button class="ctrl-btn big" id="btn-left"  title="Balra (←)">◀</button>
-      <button class="ctrl-btn med" id="btn-down"  title="Le (↓)">▼</button>
-      <button class="ctrl-btn big" id="btn-right" title="Jobbra (→)">▶</button>
-    </div>
-    <div class="ctrl-row">
-      <button class="ctrl-btn wide" id="btn-pause"   title="Szünet (P/Esc)">⏸ Szünet</button>
-      <button class="ctrl-btn wide danger" id="btn-restart" title="Újraindítás">🔁 Újra</button>
+    <button class="ctrl-btn rotate-btn" id="btn-rotate" title="Forgatás (↑ / Koppintás)">
+      <span class="ctrl-icon">🔄</span>
+      <span class="ctrl-label">FORGATÁS</span>
+    </button>
+    <div class="ctrl-row arrows-row">
+      <button class="ctrl-btn arrow-btn" id="btn-left" title="Balra (←)">
+        <span class="ctrl-icon">◀</span>
+        <span class="ctrl-label">BAL</span>
+      </button>
+      <button class="ctrl-btn arrow-btn" id="btn-down" title="Le (↓)">
+        <span class="ctrl-icon">▼</span>
+        <span class="ctrl-label">LE</span>
+      </button>
+      <button class="ctrl-btn arrow-btn" id="btn-right" title="Jobbra (→)">
+        <span class="ctrl-icon">▶</span>
+        <span class="ctrl-label">JOBB</span>
+      </button>
     </div>
   </nav>
 
 </div>
 
-<!-- Pause / Game Over overlay -->
+<!-- Szünet / Game Over overlay -->
 <div id="overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
   <h2 id="overlay-title">SZÜNET</h2>
   <p id="overlay-sub"></p>
@@ -95,13 +97,13 @@
   <button class="overlay-btn danger" id="btn-overlay-play">ÚJ JÁTÉK</button>
 </div>
 
-<!-- PWA Install Banner -->
+<!-- PWA telepítési banner -->
 <div id="install-banner" role="banner">
-  <p><strong>Telepítsd</strong> az Apu Tetrist a telefonodra – reklámmentesen, offline is játszható!</p>
+  <p><strong>Telepítsd</strong> az Apu Tetrist – reklámmentesen, offline is játszható!</p>
   <button id="btn-install">📲 Telepítés</button>
   <button id="btn-dismiss" aria-label="Bezárás">✕</button>
 </div>
 
-<script src="game.js"></script>
+<script src="game.js?v=4"></script>
 </body>
 </html>

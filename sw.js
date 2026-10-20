@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apu-tetris-v1';
+const CACHE_NAME = 'apu-tetris-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -25,8 +25,18 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+// Network-first: ha van net, mindig a legfrissebbet tölti és frissíti a cache-t,
+// ha nincs net (offline), a cache-ből adja vissza.
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request))
+    fetch(event.request)
+      .then(response => {
+        if (response.ok && event.request.method === 'GET') {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request, { ignoreSearch: true }))
   );
 });

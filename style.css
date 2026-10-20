@@ -6,24 +6,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --bg:        #0a0e1a;
-  --surface:   #111827;
-  --border:    #1e2d45;
-  --text:      #e2e8f0;
-  --muted:     #64748b;
-  --accent:    #00d4ff;
-  --accent2:   #ff006e;
-  --shadow:    0 0 20px rgba(0, 212, 255, 0.3);
-
-  /* Tetromino colors */
-  --c-I: #00d4ff;   /* cyan  */
-  --c-O: #ffd700;   /* gold  */
-  --c-T: #bf5af2;   /* violet */
-  --c-S: #30d158;   /* green */
-  --c-Z: #ff453a;   /* red   */
-  --c-J: #5e8ef7;   /* blue  */
-  --c-L: #ff9f0a;   /* orange */
-  --c-G: #2a3a4a;   /* ghost */
+  --bg:      #0a0e1a;
+  --surface: #111827;
+  --border:  #1e2d45;
+  --text:    #e2e8f0;
+  --muted:   #64748b;
+  --accent:  #00d4ff;
+  --accent2: #ff006e;
+  --glow:    0 0 18px rgba(0,212,255,0.25);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,97 +21,110 @@
 html, body {
   height: 100%;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
+  font-family: 'Inter', sans-serif;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
 
-/* ---- Layout ---- */
+/* ─── App wrapper ────────────────────────────────── */
 #app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   height: 100%;
-  padding: 8px 4px 4px;
-  gap: 8px;
+  padding: 6px 6px 4px;
+  gap: 6px;
 }
 
-/* ---- Header ---- */
+/* ─── Fejléc ─────────────────────────────────────── */
 #header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 #logo {
   font-family: 'Orbitron', monospace;
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 4vw, 1.5rem);
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: 2px;
-  text-shadow: none;
   line-height: 1;
+  flex-shrink: 0;
 }
 
-/* ---- Score Panel ---- */
+#no-ad-badge {
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  border-radius: 20px;
+  padding: 2px 7px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Pontok */
 #score-panel {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  margin-left: auto;
 }
 
 .score-box {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 4px 10px;
+  border-radius: 8px;
+  padding: 3px 8px;
   text-align: center;
-  min-width: 72px;
+  min-width: 62px;
 }
 .score-box label {
   display: block;
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 600;
-  margin-bottom: 1px;
 }
 .score-box span {
   font-family: 'Orbitron', monospace;
-  font-size: 1rem;
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
   font-weight: 700;
   color: var(--accent);
 }
 
-/* ---- Game Area ---- */
+/* ─── Játéktér ───────────────────────────────────── */
 #game-area {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex: 1;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
+  min-height: 0;
 }
 
-/* ---- Canvas ---- */
+/* Tábla keret */
 #board-wrapper {
-  position: relative;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   border: 2px solid var(--border);
-  box-shadow: var(--shadow), inset 0 0 40px rgba(0,0,0,0.5);
+  box-shadow: var(--glow), inset 0 0 30px rgba(0,0,0,0.6);
   flex-shrink: 0;
+  line-height: 0; /* canvas nincs extra magasság */
 }
 
 #tetris-canvas {
@@ -129,19 +132,20 @@ html, body {
   background: #060a14;
 }
 
-/* ---- Side Panel ---- */
+/* ─── Oldalpanel ─────────────────────────────────── */
 #side-panel {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-width: 80px;
+  gap: 8px;
+  flex-shrink: 0;
+  min-width: 72px;
 }
 
 .panel-box {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 8px;
+  padding: 6px 8px;
   text-align: center;
 }
 .panel-box h3 {
@@ -150,88 +154,187 @@ html, body {
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
-.panel-box canvas {
+#next-canvas {
   display: block;
   margin: 0 auto;
+  background: transparent;
 }
 
-/* Level badge */
 #level-box span {
   font-family: 'Orbitron', monospace;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
   font-weight: 900;
   color: var(--accent);
   display: block;
 }
 
-/* ---- Touch Controls ---- */
+/* Oldalpanel gombok: Szünet és Újra */
+.side-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.side-btn {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background 0.08s, transform 0.07s, box-shadow 0.08s;
+  min-height: 48px;
+}
+.side-btn .btn-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.side-btn .btn-txt {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.side-btn:active {
+  background: #1e2d45;
+  box-shadow: 0 0 10px rgba(0,212,255,0.35);
+  transform: scale(0.93);
+}
+#btn-pause {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+#btn-pause:active {
+  box-shadow: 0 0 14px rgba(0,212,255,0.45);
+}
+#btn-restart.danger {
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+#btn-restart.danger:active {
+  box-shadow: 0 0 14px rgba(255,0,110,0.45);
+}
+
+/* ─── Érintővezérlők: 4 nagy gomb ────────────────── */
 #touch-controls {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
   width: 100%;
-  max-width: 420px;
-  padding: 0 4px;
-}
-
-.ctrl-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
+  max-width: 480px;
+  flex-shrink: 0;
+  padding: 2px 2px 6px;
 }
 
 .ctrl-btn {
   background: var(--surface);
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 12px;
   color: var(--text);
-  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.1s, box-shadow 0.1s, transform 0.08s;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-}
-.ctrl-btn:active {
-  background: var(--border);
-  box-shadow: 0 0 12px rgba(0,212,255,0.4);
-  transform: scale(0.93);
+  transition: background 0.08s, transform 0.07s, box-shadow 0.08s, border-color 0.08s;
 }
 
-/* Sizes */
-.ctrl-btn.wide  { flex: 1; height: 48px; font-size: 1rem; font-family: 'Orbitron', monospace; letter-spacing: 1px; }
-.ctrl-btn.med   { width: 64px; height: 52px; }
-.ctrl-btn.big   { width: 76px; height: 56px; font-size: 1.6rem; }
+/* Nagy felső Forgatás sáv */
+.rotate-btn {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(180deg, #16243b 0%, var(--surface) 100%);
+  border-color: var(--accent);
+  color: var(--accent);
+  gap: 10px;
+  box-shadow: 0 0 12px rgba(0,212,255,0.18);
+}
+.rotate-btn .ctrl-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.rotate-btn .ctrl-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+.rotate-btn:active {
+  background: #1e3557;
+  box-shadow: 0 0 20px rgba(0,212,255,0.5);
+  transform: scale(0.97);
+}
 
-/* Pause / Restart special */
-#btn-pause  { border-color: var(--accent);  color: var(--accent); }
-#btn-restart{ border-color: var(--accent2); color: var(--accent2); }
+/* Alsó nagy nyilak: ◀ BAL, ▼ LE, ▶ JOBB */
+.arrows-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
 
-/* ---- Overlay (pause / game-over) ---- */
+.arrow-btn {
+  flex: 1;
+  height: 60px;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+}
+.arrow-btn .ctrl-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.arrow-btn .ctrl-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.arrow-btn:active {
+  background: #1e2d45;
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(0,212,255,0.35);
+  transform: scale(0.94);
+}
+.arrow-btn:active .ctrl-label {
+  color: var(--accent);
+}
+.arrow-btn:active .ctrl-icon {
+  color: var(--accent);
+}
+
+/* ─── Overlay ────────────────────────────────────── */
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(6,10,20,0.88);
+  background: rgba(6,10,20,0.86);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 18px;
   z-index: 100;
-  backdrop-filter: blur(6px);
-  transition: opacity 0.3s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 0.25s;
 }
 #overlay.hidden { opacity: 0; pointer-events: none; }
 
 #overlay h2 {
   font-family: 'Orbitron', monospace;
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
   font-weight: 900;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   -webkit-background-clip: text;
@@ -239,11 +342,12 @@ html, body {
   background-clip: text;
   text-align: center;
 }
-#overlay p {
-  color: var(--muted);
-  font-size: 0.9rem;
-  text-align: center;
-  line-height: 1.6;
+#overlay p { color: var(--muted); font-size: 0.9rem; }
+#overlay-score {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
 }
 
 .overlay-btn {
@@ -251,88 +355,59 @@ html, body {
   color: #fff;
   border: none;
   border-radius: 12px;
-  padding: 14px 36px;
+  padding: 13px 36px;
   font-family: 'Orbitron', monospace;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 0 24px rgba(0,212,255,0.4);
-  transition: box-shadow 0.2s, transform 0.15s;
+  box-shadow: 0 0 20px rgba(0,212,255,0.35);
+  transition: box-shadow 0.2s, transform 0.12s;
 }
-.overlay-btn:hover { box-shadow: 0 0 36px rgba(0,212,255,0.7); transform: scale(1.04); }
+.overlay-btn:hover  { box-shadow: 0 0 32px rgba(0,212,255,0.6); transform: scale(1.04); }
 .overlay-btn:active { transform: scale(0.97); }
-
 .overlay-btn.danger {
   background: linear-gradient(135deg, var(--accent2), #cc0050);
-  box-shadow: 0 0 24px rgba(255,0,110,0.35);
+  box-shadow: 0 0 20px rgba(255,0,110,0.3);
 }
-.overlay-btn.danger:hover { box-shadow: 0 0 36px rgba(255,0,110,0.6); }
+.overlay-btn.danger:hover { box-shadow: 0 0 32px rgba(255,0,110,0.55); }
 
-#overlay-score {
-  font-family: 'Orbitron', monospace;
-  font-size: 2.4rem;
-  font-weight: 900;
-  color: var(--accent);
-}
-
-/* ---- Responsive: big screens ---- */
-@media (min-width: 600px) {
-  #logo { font-size: 1.8rem; }
-  .ctrl-btn.med { width: 72px; height: 60px; }
-  .ctrl-btn.big { width: 88px; height: 64px; font-size: 1.8rem; }
-  .ctrl-btn.wide { height: 56px; }
-}
-
-/* ---- Grid lines on canvas (drawn in JS) ---- */
-
-/* ---- Install banner ---- */
+/* ─── Telepítési banner ───────────────────────────── */
 #install-banner {
   position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
+  top: 0; left: 0; right: 0;
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom: 1.5px solid var(--accent);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.7), 0 0 16px rgba(0,212,255,0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 16px;
+  gap: 10px;
+  padding: 10px 14px;
   z-index: 200;
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
 }
 #install-banner.show { transform: translateY(0); }
-#install-banner p { font-size: 0.82rem; color: var(--text); flex: 1; }
+#install-banner p { font-size: 0.78rem; flex: 1; line-height: 1.4; }
 #install-banner p strong { color: var(--accent); }
 #btn-install {
   background: var(--accent);
   color: #000;
   border: none;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 7px 14px;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   cursor: pointer;
   white-space: nowrap;
 }
-#btn-dismiss { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1.2rem; }
-
-/* No-ad badge */
-#no-ad-badge {
-  font-size: 0.6rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--accent2);
-  border: 1px solid var(--accent2);
-  border-radius: 20px;
-  padding: 2px 8px;
-  font-weight: 700;
-  flex-shrink: 0;
+#btn-dismiss {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
 }
-
-/* Line clear flash animation */
-@keyframes flash {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.1; }
-}
-.row-flash { animation: flash 0.18s ease 2; }

@@ -38,33 +38,40 @@ Csak a játék. Ahogy lennie kell.
 
 | Gomb | Funkció |
 |------|---------|
-| `←` `→` | Mozgatás |
-| `↓` | Puha esés |
+| `←` `→` | Mozgatás balra / jobbra |
+| `↓` | Puha esés (gyorsítás) |
 | `↑` | Forgatás jobbra |
 | `Z` | Forgatás balra |
-| `Szóköz` | Kemény esés (hard drop) |
-| `C` | Hold – darab tartása |
+| `Szóköz` | Kemény esés |
 | `P` / `Esc` | Szünet |
 
-### 📱 Mobilon (érintővezérlők)
+### 📱 Mobilon (idősbarát, extra nagy gombok)
 
-- **Csúsztatás balra/jobbra** – mozgatás
-- **Csúsztatás le** – puha esés
-- **Koppintás** a játéktéren – forgatás
-- Képernyő alján gombsor: minden funkció elérhető
+- **4 nagy irányító gomb alul:**
+  - `🔄 FORGATÁS` – széles, felső sáv (könnyű eltalálni bármelyik kézzel)
+  - `◀ BAL` – balra lépés
+  - `▼ LE` – puha esés / lefelé léptetés
+  - `▶ JOBB` – jobbra lépés
+- **Jobb oldali funkciógombok (oldalpanel):**
+  - `⏸ Szünet` – szüneteltetés
+  - `🔁 Újra` – új játék (pontszám-megerősítéssel)
+- **Kézmozdulatok a játéktéren:**
+  - **Csúsztatás balra/jobbra** – mozgatás
+  - **Csúsztatás le** – puha esés
+  - **Koppintás** – forgatás
 
 ---
 
 ## ✨ Funkciók
 
 - 🧱 **Teljes Tetris-motor** – SRS forgatás, 7-bag randomizer, ghost piece
-- 👻 **Ghost piece** – látod, hova esik a darab
-- 🤲 **Hold** – tartsd félre a darabot
+- 👻 **Ghost piece** – halvány árnyék mutatja az esési helyet
+- 🎯 **Idősbarát kialakítás** – nagy gombok, tiszta feliratok, nincs véletlen gombnyomás
 - 📈 **Pontozás** – szint szerint növekvő pontok
-- ⚡ **Szintek** – minden 10 sor után gyorsul
-- 🌙 **Neon dark téma** – éjjel is kíméletes
-- 📶 **Offline játék** – service worker cache
-- 📲 **Androidos telepítés** – PWA manifest
+- ⚡ **Szintek** – fokozatos gyorsulás
+- 🌙 **Neon dark téma** – kíméletes a szemnek
+- 📶 **Offline játék** – repülőgépen vagy net nélkül is működik
+- 📲 **Androidos telepítés** – PWA, mintha egy rendes app lenne
 - 🚫 **Nulla reklám** – örökre
 
 ---
